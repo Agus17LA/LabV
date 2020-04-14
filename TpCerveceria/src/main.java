@@ -29,6 +29,8 @@ public class main {
 
         BeerConsumer bc3 = new BeerConsumer();
 
+        BeerConsumer bc4 = new BeerConsumer();
+
         Thread producer = new Thread(bp);
         Thread producer2 = new Thread(bp2);
         Thread producer3 = new Thread(bp3);
