@@ -22,16 +22,10 @@ public class BeerProducer implements Runnable{
         BeerHouse bh = new BeerHouse();
         boolean flag = true;
         while(flag){
-            if(bh.getStock() > 0){
-                bh.modifyStock(1);
-            }else{
+            if(bh.getStock() != 0)
+                bh.addBeer();
+            else
                 flag = false;
-            }
-            try {
-                sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 

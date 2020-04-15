@@ -14,7 +14,7 @@ import models.BeerProducer;
 public class main {
     public static void main(String[] args) {
         BeerHouse bh = new BeerHouse();
-
+        bh.addBeer();
         BeerProducer bp = new BeerProducer();
 
         BeerProducer bp2 = new BeerProducer();
@@ -44,7 +44,8 @@ public class main {
         producer2.start();
 
         consumer.start();
-        consumer2.start();
+
+
 
     }
 }

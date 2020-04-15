@@ -6,6 +6,7 @@ public class BeerConsumer implements Runnable {
     private int consumed;
 
     public BeerConsumer() {
+
     }
 
     public int getConsumed() {
@@ -22,16 +23,10 @@ public class BeerConsumer implements Runnable {
         BeerHouse bh = new BeerHouse();
         boolean flag = true;
         while(flag){
-            if(bh.getStock() > 0){
-                bh.modifyStock(-1);
-            }else{
+            if(bh.getStock() > 0)
+                bh.consumeBeer();
+            else
                 flag = false;
-            }
-            try {
-                sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
