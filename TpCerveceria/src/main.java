@@ -14,34 +14,27 @@ import models.BeerProducer;
 public class main {
     public static void main(String[] args) {
         BeerHouse bh = new BeerHouse();
-        bh.addBeer();
-        BeerProducer bp = new BeerProducer();
+        bh.setStock(1);
 
-        BeerProducer bp2 = new BeerProducer();
+        BeerProducer bp = new BeerProducer(bh);
 
-        BeerProducer bp3 = new BeerProducer();
+        BeerProducer bp2 = new BeerProducer(bh);
 
-        BeerProducer bp4 = new BeerProducer();
+        BeerConsumer bc = new BeerConsumer(bh);
 
-        BeerConsumer bc = new BeerConsumer();
+        BeerConsumer bc2 = new BeerConsumer(bh);
 
-        BeerConsumer bc2 = new BeerConsumer();
+        BeerConsumer bc3 = new BeerConsumer(bh);
 
-        BeerConsumer bc3 = new BeerConsumer();
-
-        BeerConsumer bc4 = new BeerConsumer();
 
         Thread producer = new Thread(bp);
-        Thread producer2 = new Thread(bp2);
-        Thread producer3 = new Thread(bp3);
-        Thread producer4 = new Thread(bp4);
+        //Thread producer2 = new Thread(bp2);
 
         Thread consumer = new Thread(bc);
-        Thread consumer2 = new Thread(bc2);
-        Thread consumer3 = new Thread(bc3);
+        //Thread consumer2 = new Thread(bc2);
+        //Thread consumer3 = new Thread(bc3);
 
         producer.start();
-        producer2.start();
 
         consumer.start();
 

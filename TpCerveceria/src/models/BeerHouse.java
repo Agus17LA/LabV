@@ -1,33 +1,37 @@
 package models;
 
 public class BeerHouse {
-    private static int stock = 0;
+    private int stock = 0; //recurso compartido
 
     public BeerHouse() {
     }
 
     public int getStock() {
-        return BeerHouse.stock;
+        return this.stock;
+    }
+
+    public void setStock(int i){
+        this.stock = i;
     }
 
     public synchronized void addBeer(){
-        if(stock >= 100){
+        if(this.stock >= 100){
             try {
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        stock += 1;
-        System.out.println("[Producer] Ahora hay:" + stock);
+        this.stock += 1;
+        System.out.println("[Producer] Ahora hay:" + this.stock);
     }
 
     public synchronized void consumeBeer(){
-        if(stock > 0){
-            stock -= 1;
-            System.out.println("[Consumer] Ahora hay:" + stock);
-            notifyAll();
+        if(this.stock > 0){
+            this.stock -= 1;
+            System.out.println("[Consumer] Ahora hay:" + this.stock);
         }
+        notifyAll();
     }
 
     /*

@@ -4,9 +4,10 @@ import static java.lang.Thread.sleep;
 
 public class BeerConsumer implements Runnable {
     private int consumed;
+    private BeerHouse bh;
 
-    public BeerConsumer() {
-
+    public BeerConsumer(BeerHouse beerHouse) {
+        this.bh = beerHouse;
     }
 
     public int getConsumed() {
@@ -20,11 +21,10 @@ public class BeerConsumer implements Runnable {
     @Override
     public void run() {
         this.consumed += 1;
-        BeerHouse bh = new BeerHouse();
         boolean flag = true;
         while(flag){
-            if(bh.getStock() > 0)
-                bh.consumeBeer();
+            if(this.bh.getStock() > 0)
+                this.bh.consumeBeer();
             else
                 flag = false;
         }
